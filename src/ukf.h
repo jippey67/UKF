@@ -35,6 +35,12 @@ public:
   ///* time when the state is true, in us
   long long time_us_;
 
+  ///* previous timestamp
+  long previous_timestamp_;
+
+  ///* number of sigma points
+  unsigned int num_sig_pts;
+
   ///* Process noise standard deviation longitudinal acceleration in m/s^2
   double std_a_;
 
@@ -84,6 +90,10 @@ public:
    */
   virtual ~UKF();
 
+  /**
+   * Converts a vector in polar coordinates to a vector in cartesian coordinates
+   */
+  VectorXd ConvPolarToCart(const VectorXd& x);
   /**
    * ProcessMeasurement
    * @param meas_package The latest measurement data of either radar or laser

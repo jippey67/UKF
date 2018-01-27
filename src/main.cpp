@@ -14,13 +14,14 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::vector;
 
+
+
 void check_arguments(int argc, char* argv[]) {
   string usage_instructions = "Usage instructions: ";
   usage_instructions += argv[0];
   usage_instructions += " path/to/input.txt output.txt";
 
   bool has_valid_args = false;
-
   // make sure the user has provided input and output files
   if (argc == 1) {
     cerr << usage_instructions << endl;
@@ -160,6 +161,7 @@ int main(int argc, char* argv[]) {
 
   for (size_t k = 0; k < number_of_measurements; ++k) {
     // Call the UKF-based fusion
+
     ukf.ProcessMeasurement(measurement_pack_list[k]);
 
     // timestamp
